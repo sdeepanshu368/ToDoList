@@ -1,0 +1,18 @@
+<div class="my-3">
+    <h3>Add a Todo</h3>
+    <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" [(ngModel)]="title" class="form-control" name="title" id="title" required minlength="3" #titleControl="ngModel">
+          <span *ngIf="f.submitted && titleControl.errors?.required">*Title is required</span>
+          <span *ngIf="f.submitted && titleControl.errors?.minlength">*Title is too short</span>
+        </div>
+        <div class="mb-3">
+            <label for="desc" class="form-label">Description</label>
+            <textarea [(ngModel)]="desc" class="form-control" name="desc" id="desc" rows="3" required minlength="5" #descControl="ngModel"></textarea>
+            <span *ngIf="f.submitted && descControl.errors?.required">*Please write the Description</span>
+            <span *ngIf="f.submitted && descControl.errors?.minlength">*Description must be at least 5 characters long</span>
+        </div>
+        <button type="submit" class="btn btn-sm btn-success">Add Todo</button>
+    </form>
+</div>
